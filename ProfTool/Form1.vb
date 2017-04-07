@@ -207,8 +207,4 @@ Public Class Form1
         End Using
     End Sub
 
-    Private Sub FlatButton1_Click_3(sender As Object, e As EventArgs)
-        SaveShortcuts()
-        Application.Exit()
-    End Sub
 End Class
