@@ -40,12 +40,12 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Control.CheckForIllegalCrossThreadCalls = False
-
         StartProcess("runonce.exe", "/alternateshellstartup")
 
+        Control.CheckForIllegalCrossThreadCalls = False
+
         If File.Exists(String.Format("{0}\settings.json", Application.StartupPath)) Then
-            ThreadPool.QueueUserWorkItem(AddressOf LoadShortcuts)
+            LoadShortcuts()
         End If
     End Sub
 
@@ -90,7 +90,7 @@ Public Class Form1
         Dim msg = MsgBox("There is still a session running, are you sure you want to shut down?", MessageBoxButtons.YesNo)
 
         If msg = MsgBoxResult.Yes Then
-            StartProcess("cmd.exe", "/c shutdown -s -f -t 00")
+            ThreadPool.QueueUserWorkItem(AddressOf Shutdown)
         End If
     End Sub
 
@@ -106,7 +106,7 @@ Public Class Form1
         Dim msg = MsgBox("There is still a session running, are you sure you want to reboot?", MessageBoxButtons.YesNo)
 
         If msg = DialogResult.Yes Then
-            StartProcess("cmd.exe", "/c shutdown -r -o -f -t 00")
+            StartProcess("cmd.exe", "/c shutdown -r -o -f -t 01")
         End If
     End Sub
 
@@ -150,14 +150,14 @@ Public Class Form1
     End Sub
 
     Private Sub LoadShortcuts()
-        Dim path As String = String.Format("{0}\settings.json")
+        Dim path As String = String.Format("{0}\settings.json", Application.StartupPath)
 
         Using reader As New StreamReader(path)
             Dim sett As Settings = JsonConvert.DeserializeObject(Of Settings)(reader.ReadToEnd)
 
             For Each shrtcut As Shortcut In sett.Shortcuts
                 Dim btnClick As New shortcutButton
-                btnClick.Text = shrtcut.ExecutablePath
+                btnClick.Text = shr.ExecutablePath
                 btnClick.Content = shrtcut.DisplayName
                 btnClick.Image = BytesToImage(shrtcut.AssociatedIcon)
                 btnClick.Size = New Size(109, 102)
@@ -166,6 +166,11 @@ Public Class Form1
                 FlowLayoutPanel2.Controls.Add(btnClick)
             Next
         End Using
+    End Sub
+
+    Private Sub Shutdown()
+        SaveShortcuts()
+        StartProcess("cmd.exe", "/c shutdown -s -f -t 00")
     End Sub
 
     Private Sub SaveShortcuts()
@@ -178,7 +183,7 @@ Public Class Form1
                 shortcut.ExecutablePath = btn.Text
                 shortcut.DisplayName = btn.Content
                 shortcut.AssociatedIcon = ImageToBytes(btn.Image)
-                sett.Shortcuts.ToList.Add(shortcut)
+                sett.Shortcuts.Add(shortcut)
             End If
         Next
 
@@ -202,7 +207,8 @@ Public Class Form1
         End Using
     End Sub
 
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        ThreadPool.QueueUserWorkItem(AddressOf SaveShortcuts)
+    Private Sub FlatButton1_Click_3(sender As Object, e As EventArgs)
+        SaveShortcuts()
+        Application.Exit()
     End Sub
 End Class

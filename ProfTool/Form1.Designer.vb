@@ -232,6 +232,7 @@ Partial Class Form1
         '
         Me.ShortcutButton1.Content = "Regedit"
         Me.ShortcutButton1.Image = Global.ProfTool.My.Resources.Resources.regedit
+        Me.ShortcutButton1.IsAddedShortcut = False
         Me.ShortcutButton1.Location = New System.Drawing.Point(3, 3)
         Me.ShortcutButton1.Name = "ShortcutButton1"
         Me.ShortcutButton1.Size = New System.Drawing.Size(109, 102)
@@ -242,6 +243,7 @@ Partial Class Form1
         '
         Me.btnDiskmgmt.Content = "Disk management"
         Me.btnDiskmgmt.Image = CType(resources.GetObject("btnDiskmgmt.Image"), System.Drawing.Image)
+        Me.btnDiskmgmt.IsAddedShortcut = False
         Me.btnDiskmgmt.Location = New System.Drawing.Point(118, 3)
         Me.btnDiskmgmt.Name = "btnDiskmgmt"
         Me.btnDiskmgmt.Size = New System.Drawing.Size(109, 102)
@@ -252,6 +254,7 @@ Partial Class Form1
         '
         Me.btnDevmgmt.Content = "Device management"
         Me.btnDevmgmt.Image = CType(resources.GetObject("btnDevmgmt.Image"), System.Drawing.Image)
+        Me.btnDevmgmt.IsAddedShortcut = False
         Me.btnDevmgmt.Location = New System.Drawing.Point(233, 3)
         Me.btnDevmgmt.Name = "btnDevmgmt"
         Me.btnDevmgmt.Size = New System.Drawing.Size(109, 102)
@@ -262,6 +265,7 @@ Partial Class Form1
         '
         Me.btnCommandPrompt.Content = "Command prompt"
         Me.btnCommandPrompt.Image = Global.ProfTool.My.Resources.Resources.command
+        Me.btnCommandPrompt.IsAddedShortcut = False
         Me.btnCommandPrompt.Location = New System.Drawing.Point(348, 3)
         Me.btnCommandPrompt.Name = "btnCommandPrompt"
         Me.btnCommandPrompt.Size = New System.Drawing.Size(109, 102)
@@ -272,6 +276,7 @@ Partial Class Form1
         '
         Me.btnCommandPromptElevated.Content = "Command prompt (Elevated)"
         Me.btnCommandPromptElevated.Image = Global.ProfTool.My.Resources.Resources.command_admin
+        Me.btnCommandPromptElevated.IsAddedShortcut = False
         Me.btnCommandPromptElevated.Location = New System.Drawing.Point(463, 3)
         Me.btnCommandPromptElevated.Name = "btnCommandPromptElevated"
         Me.btnCommandPromptElevated.Size = New System.Drawing.Size(109, 102)
@@ -282,6 +287,7 @@ Partial Class Form1
         '
         Me.btnRestartAdvancedOptions.Content = "Advanced startup options"
         Me.btnRestartAdvancedOptions.Image = Global.ProfTool.My.Resources.Resources.recovery
+        Me.btnRestartAdvancedOptions.IsAddedShortcut = False
         Me.btnRestartAdvancedOptions.Location = New System.Drawing.Point(578, 3)
         Me.btnRestartAdvancedOptions.Name = "btnRestartAdvancedOptions"
         Me.btnRestartAdvancedOptions.Size = New System.Drawing.Size(109, 102)
@@ -304,6 +310,7 @@ Partial Class Form1
         '
         Me.btnExplorer.Content = "Explorer"
         Me.btnExplorer.Image = Global.ProfTool.My.Resources.Resources.explorer
+        Me.btnExplorer.IsAddedShortcut = False
         Me.btnExplorer.Location = New System.Drawing.Point(3, 3)
         Me.btnExplorer.Name = "btnExplorer"
         Me.btnExplorer.Size = New System.Drawing.Size(109, 102)
@@ -314,6 +321,7 @@ Partial Class Form1
         '
         Me.btnRun.Content = "Run..."
         Me.btnRun.Image = CType(resources.GetObject("btnRun.Image"), System.Drawing.Image)
+        Me.btnRun.IsAddedShortcut = False
         Me.btnRun.Location = New System.Drawing.Point(118, 3)
         Me.btnRun.Name = "btnRun"
         Me.btnRun.Size = New System.Drawing.Size(109, 102)
@@ -324,6 +332,7 @@ Partial Class Form1
         '
         Me.btnBrowser.Content = "Browser"
         Me.btnBrowser.Image = CType(resources.GetObject("btnBrowser.Image"), System.Drawing.Image)
+        Me.btnBrowser.IsAddedShortcut = False
         Me.btnBrowser.Location = New System.Drawing.Point(233, 3)
         Me.btnBrowser.Name = "btnBrowser"
         Me.btnBrowser.Size = New System.Drawing.Size(109, 102)
@@ -334,6 +343,7 @@ Partial Class Form1
         '
         Me.btnAntivirus.Content = "Antivirus"
         Me.btnAntivirus.Image = Global.ProfTool.My.Resources.Resources.antivirus
+        Me.btnAntivirus.IsAddedShortcut = False
         Me.btnAntivirus.Location = New System.Drawing.Point(348, 3)
         Me.btnAntivirus.Name = "btnAntivirus"
         Me.btnAntivirus.Size = New System.Drawing.Size(109, 102)
@@ -355,7 +365,6 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(927, 622)
-        Me.ControlBox = False
         Me.Controls.Add(Me.btnAddShortcut)
         Me.Controls.Add(Me.FlowLayoutPanel2)
         Me.Controls.Add(Me.FlowLayoutPanel1)

@@ -38,7 +38,7 @@ Module Tools
     <Extension()>
     Public Function ImageToBytes(ByVal image As Image) As Byte()
         Using ms As New MemoryStream()
-            image.Save(ms, image.RawFormat)
+            image.Save(ms, Imaging.ImageFormat.Png)
             Return ms.ToArray
         End Using
     End Function
